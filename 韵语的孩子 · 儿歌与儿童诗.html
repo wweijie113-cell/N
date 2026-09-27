@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>韵语的孩子 · 儿歌与儿童诗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F1E4;
+  --paper-2:#EFE8D6;
+  --ink:#2A241C;
+  --ink-soft:#5B5346;
+  --coral:#D6572E;   /* 儿歌 · 对话 · 圆 */
+  --coral-soft:#F3D9C9;
+  --teal:#2E5F58;    /* 儿童诗 · 独白 · 方 */
+  --teal-soft:#D6E3DE;
+  --gold:#B98A2E;
+  --line: rgba(42,36,28,0.14);
+  --shadow: 0 10px 30px rgba(42,36,28,0.10);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#211D17; --paper-2:#2A251D; --ink:#EFE7D6; --ink-soft:#BDB09A;
+    --coral-soft:#3A2A21; --teal-soft:#1E322E; --line: rgba(239,231,214,0.16);
+    --shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#211D17; --paper-2:#2A251D; --ink:#EFE7D6; --ink-soft:#BDB09A;
+  --coral-soft:#3A2A21; --teal-soft:#1E322E; --line: rgba(239,231,214,0.16);
+  --shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+html{scroll-behavior:smooth; scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));}
+*{margin:0; padding:0;}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans SC", "PingFang SC", sans-serif;
+  font-weight:300; line-height:1.9; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{ font-family:"Noto Serif SC", serif; color:var(--ink); font-weight:700; }
+.serif{font-family:"Noto Serif SC", serif;}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+.wrap-wide{max-width:980px; margin:0 auto; padding:0 24px;}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky; top:0; z-index:30;
+  padding-top:env(safe-area-inset-top,0px);
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.navrow{
+  max-width:980px; margin:0 auto; padding:14px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{font-family:"Noto Serif SC",serif; font-weight:700; font-size:17px; letter-spacing:.02em;}
+.navlinks{display:flex; gap:22px; font-size:14px; color:var(--ink-soft); overflow-x:auto;}
+.navlinks a{color:inherit; text-decoration:none; white-space:nowrap; border-bottom:1px solid transparent; padding-bottom:3px; transition:color .2s, border-color .2s;}
+.navlinks a:hover, .navlinks a:focus-visible{color:var(--ink); border-color:var(--gold);}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; padding:96px 24px 84px; overflow:hidden;
+  background:
+    radial-gradient(560px 380px at 82% -10%, var(--coral-soft), transparent 65%),
+    radial-gradient(520px 360px at -10% 110%, var(--teal-soft), transparent 65%);
+}
+.hero-inner{max-width:820px; margin:0 auto; text-align:left;}
+.kicker{
+  font-size:14px; color:var(--ink-soft); letter-spacing:.06em; margin-bottom:22px;
+  display:flex; align-items:center; gap:10px;
+}
+.kicker .dot{width:7px; height:7px; border-radius:50%; background:var(--coral); flex:none;}
+.kicker .sq{width:7px; height:7px; background:var(--teal); flex:none;}
+h1.title{
+  font-size:clamp(38px, 6vw, 62px); line-height:1.28; letter-spacing:.01em;
+  max-width:14ch;
+}
+h1.title em{ font-style:normal; color:var(--coral); }
+.hero p.lede{
+  margin-top:26px; max-width:52ch; font-size:18px; color:var(--ink-soft); font-weight:300;
+}
+.hero-quote{
+  margin-top:44px; padding-left:22px; border-left:2px solid var(--gold);
+  font-family:"Noto Serif SC",serif; font-size:17px; color:var(--ink); max-width:48ch;
+}
+.hero-quote cite{display:block; margin-top:10px; font-family:"Noto Sans SC",sans-serif; font-size:13px; color:var(--ink-soft); font-style:normal;}
+
+/* ---------- section shell ---------- */
+section{padding:88px 0;}
+.section-head{margin-bottom:48px;}
+.section-head .tag{font-size:13px; color:var(--ink-soft); letter-spacing:.04em; margin-bottom:10px;}
+.section-head h2{font-size:clamp(26px,4vw,36px); line-height:1.3;}
+.section-head p{margin-top:14px; color:var(--ink-soft); max-width:56ch; font-size:15.5px;}
+hr.rule{border:none; border-top:1px solid var(--line); margin:0;}
+
+/* ---------- theory cards ---------- */
+.theory-grid{display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:2px; overflow:hidden;}
+.theory-card{background:var(--paper); padding:30px 28px;}
+.theory-card h3{font-size:18px; margin-bottom:10px; display:flex; align-items:baseline; gap:10px;}
+.theory-card h3 .no{font-family:"Noto Serif SC",serif; color:var(--gold); font-size:14px;}
+.theory-card p{color:var(--ink-soft); font-size:15px;}
+.theory-card p+p{margin-top:10px;}
+@media(min-width:720px){ .theory-grid{grid-template-columns:1fr 1fr;} }
+
+/* ---------- dialogue / monologue split motif ---------- */
+.contrast-band{
+  display:grid; grid-template-columns:1fr; border:1px solid var(--line);
+}
+@media(min-width:860px){ .contrast-band{grid-template-columns:1fr 1fr;} }
+.panel{ padding:48px 40px; position:relative; }
+.panel.rhyme{ background:var(--coral-soft); }
+.panel.poem{ background:var(--teal-soft); }
+.panel-label{
+  display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-soft); margin-bottom:18px;
+}
+.shape{width:9px; height:9px; flex:none;}
+.shape.circle{border-radius:50%; background:var(--coral);}
+.shape.square{background:var(--teal);}
+.panel h3{font-size:24px; margin-bottom:14px;}
+.panel .mode{font-family:"Noto Serif SC",serif; font-size:15px; color:var(--ink); margin-bottom:18px; opacity:.75;}
+.panel ul{list-style:none;}
+.panel li{padding:9px 0; border-top:1px solid rgba(0,0,0,0.08); font-size:15px; color:var(--ink-soft);}
+.panel li:first-child{border-top:none;}
+.panel li b{color:var(--ink); font-weight:500;}
+:root[data-theme="dark"] .panel li, :root:not([data-theme="light"]) .panel li{border-top-color:rgba(255,255,255,0.08);}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .panel li{border-top-color:rgba(255,255,255,0.08);} }
+
+/* ---------- forms chips ---------- */
+.chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
+.chip{
+  border:1px solid var(--line); border-radius:999px; padding:9px 18px; font-size:14px;
+  color:var(--ink-soft); background:var(--paper-2);
+}
+
+/* ---------- poem timeline ---------- */
+.timeline{border-left:1px solid var(--line); margin-left:6px; padding-left:34px; display:flex; flex-direction:column; gap:38px;}
+.tl-item{position:relative;}
+.tl-item::before{
+  content:""; position:absolute; left:-40px; top:6px; width:9px; height:9px;
+  background:var(--teal);
+}
+.tl-item .era{font-size:13px; color:var(--gold); letter-spacing:.03em; margin-bottom:6px;}
+.tl-item h4{font-size:18px; margin-bottom:6px; font-weight:600;}
+.tl-item p{color:var(--ink-soft); font-size:15px;}
+
+/* ---------- examples ---------- */
+.ex-grid{display:grid; grid-template-columns:1fr; gap:24px;}
+@media(min-width:720px){ .ex-grid{grid-template-columns:1fr 1fr;} }
+.ex-card{
+  background:var(--paper-2); border:1px solid var(--line); padding:30px 28px;
+  box-shadow:var(--shadow);
+}
+.ex-card.wide{grid-column:1/-1;}
+.ex-title{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:16px; gap:12px;}
+.ex-title h4{font-size:17px;}
+.ex-title span{font-size:12.5px; color:var(--ink-soft); white-space:nowrap;}
+.ex-card blockquote{
+  font-family:"Noto Serif SC",serif; font-size:16.5px; line-height:2.05; color:var(--ink);
+  white-space:pre-line;
+}
+.ex-note{margin-top:16px; font-size:13.5px; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:14px;}
+.ex-card.rhyme{border-left:3px solid var(--coral);}
+.ex-card.poem{border-left:3px solid var(--teal);}
+
+/* ---------- compare table ---------- */
+.cmp{width:100%; border-collapse:collapse; font-size:14.5px;}
+.cmp th, .cmp td{ text-align:left; padding:16px 18px; border-bottom:1px solid var(--line); vertical-align:top; }
+.cmp th{font-family:"Noto Serif SC",serif; font-weight:700; color:var(--ink-soft); font-size:13px; letter-spacing:.03em;}
+.cmp td.dim{font-weight:500; color:var(--ink); width:18%;}
+.cmp td.rhyme{color:var(--coral); border-right:1px dashed var(--line);}
+.cmp-wrap{overflow-x:auto; border:1px solid var(--line);}
+.cmp-wrap table{min-width:640px;}
+
+/* footer */
+footer{padding:64px 24px 56px; border-top:1px solid var(--line); text-align:center;}
+footer p{color:var(--ink-soft); font-size:13.5px;}
+footer .brand{margin-bottom:10px;}
+
+.theme-toggle{
+  border:1px solid var(--line); background:transparent; color:var(--ink-soft);
+  font-size:13px; padding:6px 12px; border-radius:999px; cursor:pointer; flex:none;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navrow">
+    <div class="brand serif">韵语的孩子</div>
+    <div class="navlinks">
+      <a href="#theory">理论基础</a>
+      <a href="#split">对话与独白</a>
+      <a href="#ernge">儿歌</a>
+      <a href="#poem">儿童诗</a>
+      <a href="#compare">对照</a>
+    </div>
+    <button class="theme-toggle" id="themeBtn" type="button">深色</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker"><span class="dot"></span>儿歌 · Nursery Rhymes<span class="sq"></span>儿童诗 · Children's Poetry</div>
+    <h1 class="title serif">耳朵先于头脑，<em>韵律</em>先于道理。</h1>
+    <p class="lede">在儿童文学的文体版图里，用韵律写成的语言自成一类——朱自强称之为"韵语儿童文学"。它不只是文学的一个分支，更被认为触及了人类与生俱来的诗性本能。</p>
+    <div class="hero-quote">
+      "本能的缪斯"是儿童与生俱来的、以韵律、节奏和运动为表征的生存性与创造性力量——幼儿无需理性理解，只用耳朵，就能直观感受诗歌语言的魅力。
+      <cite>—— 布约克沃尔德，《本能的缪斯》</cite>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="theory">
+  <div class="wrap-wide">
+    <div class="section-head">
+      <div class="tag">01 · 理论基础</div>
+      <h2>为什么韵语值得单独成类</h2>
+      <p>成人文学中也有韵文，但儿童对韵语的心理需求与感受方式，有着自己独特的位置。三条线索共同支撑起这一判断。</p>
+    </div>
+    <div class="theory-grid">
+      <div class="theory-card">
+        <h3><span class="no">一</span>独立分类的必要性</h3>
+        <p>朱自强在构建儿童文学文体分类时，将"韵语儿童文学"独立为一大类别，涵盖儿歌与儿童诗，也包括偶见用韵语写成的童话。</p>
+        <p>这不是简单地把"押韵的作品"归为一堆，而是承认韵语对儿童有着区别于散文体的独特作用方式。</p>
+      </div>
+      <div class="theory-card">
+        <h3><span class="no">二</span>本能的缪斯</h3>
+        <p>挪威学者布约克沃尔德认为，幼儿天生就是诗人——韵律感受力先于理性思维出现。乔姆斯基与平克的"语言本能"理论，也证实儿童具有天赋的句法逻辑；婴儿在摇篮曲的韵律里感受到的，是与生俱来的本能，而非后天教育的结果。</p>
+      </div>
+      <div class="theory-card">
+        <h3><span class="no">三</span>古老的历史记忆</h3>
+        <p>批评家弗莱在《神力的语言》中指出，诗歌具有"原始"属性。韵语儿童文学深藏着全人类文学最古老的历史记忆，让人类语言的本性，在儿童这个新生命身上得以延续。</p>
+      </div>
+      <div class="theory-card">
+        <h3><span class="no">四</span>两种语体的分野</h3>
+        <p>正因为有这层共同的理论根基，儿歌与儿童诗才被安放在同一屋檐下；但它们在具体的语言形态与心理功能上，又分别朝着"对话"与"独白"两个方向生长——这正是下一节要展开的对比。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="split" style="padding-top:0;">
+  <div class="wrap-wide">
+    <div class="section-head">
+      <div class="tag">02 · 核心分野</div>
+      <h2>一个是对话，一个是独白</h2>
+      <p>维果茨基区分了外部语言与内部语言。儿歌是口头的、面向他人的"对话"；儿童诗是书面的、面向自我的"独白"——这个区分，是理解两者一切差异的起点。</p>
+    </div>
+  </div>
+  <div class="contrast-band">
+    <div class="panel rhyme">
+      <div class="panel-label"><span class="shape circle"></span>圆 · 循环往复</div>
+      <h3 class="serif">儿歌</h3>
+      <div class="mode">对话 —— 口头语言，面向他人而唱</div>
+      <ul>
+        <li><b>形象</b>：客观生动的印象白描</li>
+        <li><b>主体</b>：群体的、概括的"我们"</li>
+        <li><b>场景</b>：吟唱、嬉戏、母子互动</li>
+        <li><b>结构</b>：顶针、重复，便于记忆传唱</li>
+      </ul>
+    </div>
+    <div class="panel poem">
+      <div class="panel-label"><span class="shape square"></span>方 · 内省沉思</div>
+      <h3 class="serif">儿童诗</h3>
+      <div class="mode">独白 —— 书面 / 内部语言，面向自我</div>
+      <ul>
+        <li><b>形象</b>："意在象外"的意象，托物言志</li>
+        <li><b>主体</b>：鲜明独立的"个我"</li>
+        <li><b>场景</b>：朗诵，也适于默读、沉思</li>
+        <li><b>结构</b>：结构复杂，讲究"意在言外"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ernge">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">03 · 儿歌</div>
+      <h2 class="serif">儿歌 <span style="color:var(--coral)">Nursery Rhymes</span></h2>
+      <p>民间流传或文人拟作、供儿童吟唱的歌谣。古称"童谣"，现代多称"儿歌"。按吟唱者可分为"母歌"（摇篮曲、逗弄歌）与"儿戏"；按作者可分为民间儿歌与创作儿歌。</p>
+    </div>
+
+    <h3 style="font-size:17px; margin-bottom:14px;">核心价值</h3>
+    <div class="theory-grid" style="margin-bottom:56px;">
+      <div class="theory-card">
+        <h3><span class="no">思想</span>道德导向</h3>
+        <p>传递端正的生活态度与朴素价值观。《张打铁》体现踏实可靠，一类以钱财考验亲情的儿歌则强调亲情在利益面前的坚定。</p>
+      </div>
+      <div class="theory-card">
+        <h3><span class="no">语言</span>"儿语"的极致</h3>
+        <p>儿歌的韵语是"儿语"（Motherese）发展到极致的结果。幼儿初期凭声音感悟语言，在儿歌韵律的浇灌下，语言幼芽得以飞速成长。</p>
+      </div>
+      <div class="theory-card">
+        <h3><span class="no">民俗</span>风俗的载体</h3>
+        <p>许多儿歌记载并保存了传统的岁时风俗，如描述小年习俗的春节民俗歌，把节令知识编进了朗朗上口的句子里。</p>
+      </div>
+      <div class="theory-card">
+        <h3><span class="no">音乐</span>儿歌的生命</h3>
+        <p>体现为声音力度的对比（调平仄）、时间长度的对比（音尺的整齐排列），以及密集的押韵——这是儿歌区别于儿童诗最直观的听觉特征。</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px; margin-bottom:14px;">十种特殊形式</h3>
+    <div class="chips" style="margin-bottom:60px;">
+      <span class="chip">摇篮曲</span><span class="chip">游戏歌</span><span class="chip">数数歌</span>
+      <span class="chip">绕口令</span><span class="chip">连锁调</span><span class="chip">问答歌</span>
+      <span class="chip">谜语歌</span><span class="chip">颠倒歌</span><span class="chip">时序歌</span><span class="chip">字头歌</span>
+    </div>
+
+    <h3 style="font-size:17px; margin-bottom:18px;">范例细读</h3>
+    <div class="ex-grid">
+      <div class="ex-card rhyme">
+        <div class="ex-title"><h4 class="serif">《一只哈巴狗》</h4><span>肖像白描</span></div>
+        <blockquote>一只哈巴狗，蹲在大门口，
+眼睛黑黝黝，想吃肉骨头。</blockquote>
+        <div class="ex-note">四句成篇，形象客观生动——正是"对话体"儿歌的典型：不做内心剖白，只呈现一幅让人会心一笑的白描画面。</div>
+      </div>
+      <div class="ex-card rhyme">
+        <div class="ex-title"><h4 class="serif">《张打铁》</h4><span>价值观传递</span></div>
+        <blockquote>张打铁，李打铁，打把剪刀送姐姐。
+姐姐留我歇一歇，我要回家学打铁。</blockquote>
+        <div class="ex-note">主人公是概括化的"我"，重复的句式便于吟唱记忆，也把"踏实做事"的态度不着痕迹地传递了下去。</div>
+      </div>
+      <div class="ex-card rhyme">
+        <div class="ex-title"><h4 class="serif">绕口令</h4><span>双声叠韵 · 游戏感</span></div>
+        <blockquote>一面小花鼓，鼓上画老虎。
+宝宝敲破鼓，妈妈用布补。
+不知是布补鼓，还是布补虎。</blockquote>
+        <div class="ex-note">利用发音障碍制造游戏乐趣，是儿歌"趣味性"最直接的体现。</div>
+      </div>
+      <div class="ex-card rhyme">
+        <div class="ex-title"><h4 class="serif">连锁调</h4><span>顶针续麻</span></div>
+        <blockquote>板凳板凳歪歪，上面坐个乖乖。
+乖乖出来踢球，上面坐个小猴。
+小猴出来跑跑，上面坐个熊猫……</blockquote>
+        <div class="ex-note">前一句的结尾词接后一句的开头，首尾相连、无限延伸，是训练语言反应力的经典形式。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="poem">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">04 · 儿童诗</div>
+      <h2 class="serif">儿童诗 <span style="color:var(--teal)">Children's Poetry</span></h2>
+      <p>比起儿歌，儿童诗是书面语言，结构更复杂，注重"意在言外"，既可朗诵，也适于默读沉思。</p>
+    </div>
+
+    <h3 style="font-size:17px; margin-bottom:18px;">从教训到童趣：四个阶段</h3>
+    <div class="timeline" style="margin-bottom:60px;">
+      <div class="tl-item">
+        <div class="era">18世纪初 · 教训主义时期</div>
+        <h4>为教育而写</h4>
+        <p>早期儿童诗起源于教育目的，代表是瓦茨博士的《圣歌》——诗歌首先是道德训诫的工具。</p>
+      </div>
+      <div class="tl-item">
+        <div class="era">浪漫主义 · 发现儿童</div>
+        <h4>纯真被看见</h4>
+        <p>威廉·布莱克的《天真之歌》咏唱纯真无暇的孩童，成为儿童诗的先驱；泰勒姐妹写下了流传至今的摇篮曲式短诗。</p>
+      </div>
+      <div class="tl-item">
+        <div class="era">19世纪 · 荒诞诗的解放</div>
+        <h4>笑声颠覆教训</h4>
+        <p>爱德华·利尔（《荒诞书》开山鼻祖）与刘易斯·卡洛尔以荒诞诗彻底颠覆了儿童诗的教训性，把笑声和解放还给了孩子。</p>
+      </div>
+      <div class="tl-item">
+        <div class="era">现代 · 由诗意走向通俗</div>
+        <h4>直接以孩童口吻说话</h4>
+        <p>斯蒂文森表现儿童的现实与内心，米尔恩写下《当我们很小的时候》；当代诗如希尔弗斯坦《阁楼上的光》，进一步打破传统，直接用孩童的视角对话。</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:17px; margin-bottom:14px;">主要种类</h3>
+    <div class="chips" style="margin-bottom:60px;">
+      <span class="chip">抒情诗</span><span class="chip">朗诵诗</span><span class="chip">童话诗</span>
+      <span class="chip">寓言诗</span><span class="chip">图像诗</span><span class="chip">文字诗</span>
+      <span class="chip">荒诞诗</span><span class="chip">讽刺诗</span>
+    </div>
+
+    <h3 style="font-size:17px; margin-bottom:18px;">范例细读</h3>
+    <div class="ex-grid">
+      <div class="ex-card poem wide">
+        <div class="ex-title"><h4 class="serif">希尔弗斯坦《孩子和老人》</h4><span>选自《阁楼上的光》 · 独白与意在言外</span></div>
+        <blockquote>孩子说："有时我会把勺子掉到地上。"　　老人说："我也一样。"
+孩子悄悄地说："我尿裤子。"　　老人笑了："我也是。"
+孩子又说："我总是哭鼻子。"　　老人点点头："我也如此。"
+"最糟糕的是，"孩子说，"大人对我不在意。"
+这时他感觉到那手又软又暖。
+老人说："我明白你的意思。"</blockquote>
+        <div class="ex-note">通篇几乎全是对话，却指向的是"独白"式的内心共鸣——生命两端的孤独在极简的语言里悄然呼应，正是"意在言外"的示范。</div>
+      </div>
+      <div class="ex-card poem">
+        <div class="ex-title"><h4 class="serif">烟地良子《柠檬》</h4><span>意象 · 托物言志</span></div>
+        <blockquote>柠檬一定是想到远方去！
+薄薄地切一切，就会明白柠檬的心。
+薄薄地切一切，滚出来好多个车轮。
+散发着好闻的香味儿，车轮，车轮，车轮。
+柠檬一定是想到远方去！</blockquote>
+        <div class="ex-note">"车轮"这一意象把静止的柠檬切片，变成了向远方奔跑的渴望——这是儿歌白描无法抵达的"意在象外"。</div>
+      </div>
+      <div class="ex-card poem">
+        <div class="ex-title"><h4 class="serif">詹冰《游戏》</h4><span>童趣 · 出人意料</span></div>
+        <blockquote>"小弟弟，我们来游戏，
+姐姐当老师，你当学生。"
+"姐姐，那么，小妹妹呢？"
+"小妹妹太小了，她什么也不会做。
+我看——让她当校长算了。"</blockquote>
+        <div class="ex-note">让"什么都不会"的小妹妹当校长，正是儿童逻辑里独特的幽默——童趣不靠说教，靠观察视角本身。</div>
+      </div>
+      <div class="ex-card poem wide">
+        <div class="ex-title"><h4 class="serif">林良《你几岁》</h4><span>浅语的艺术</span></div>
+        <blockquote>你家人多不多？ / 很多。
+一共有几个？ / 七个。
+哪七个？ / 爸爸妈妈小弟弟， / 一个我， / 一个九官鸟， / 还有两条大金鱼。</blockquote>
+        <div class="ex-note">用最洗练的"浅语"，让孩子把宠物也算进"家人"——独立的"个我"视角，在最朴素的问答里显露出来。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap-wide">
+    <div class="section-head">
+      <div class="tag">05 · 对照</div>
+      <h2>七个维度，一眼看清</h2>
+      <p>把前面的理论收拢成一张表，儿歌与儿童诗的差异会更清晰。</p>
+    </div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>维度</th><th>儿歌</th><th>儿童诗</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="dim">语言性质</td><td class="rhyme">口头语言</td><td>书面 / 内部语言</td></tr>
+          <tr><td class="dim">言说方式</td><td class="rhyme">对话</td><td>独白</td></tr>
+          <tr><td class="dim">形象处理</td><td class="rhyme">客观白描</td><td>意在象外的意象</td></tr>
+          <tr><td class="dim">抒情主体</td><td class="rhyme">群体的、概括的"我"</td><td>鲜明独立的"个我"</td></tr>
+          <tr><td class="dim">结构</td><td class="rhyme">顶针重复，浅易好记</td><td>结构复杂，讲究"意在言外"</td></tr>
+          <tr><td class="dim">接受方式</td><td class="rhyme">吟唱、嬉戏</td><td>可朗诵，亦适于默读沉思</td></tr>
+          <tr><td class="dim">修辞</td><td class="rhyme">押韵、顶针为主</td><td>多用比喻、拟人，避免复杂通感</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="brand serif">韵语的孩子</div>
+  <p>据朱自强儿童文学理论与相关文本整理 · 一份关于韵律、童年与语言本能的小小科普</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('themeBtn');
+  var root = document.documentElement;
+  function setLabel(){
+    var mode = root.getAttribute('data-theme');
+    btn.textContent = mode === 'dark' ? '浅色' : '深色';
+  }
+  btn.addEventListener('click', function(){
+    var current = root.getAttribute('data-theme');
+    if(current === 'dark'){ root.setAttribute('data-theme','light'); }
+    else { root.setAttribute('data-theme','dark'); }
+    setLabel();
+  });
+  setLabel();
+})();
+</script>
+</body>
+</html>
